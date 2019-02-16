@@ -238,7 +238,7 @@ public class TabFragmentPrintLayout extends Fragment implements RadioGroup.OnChe
 
         //Optionally include print attributes.
         PrintAttributes printAttributes = new PrintAttributes.Builder()
-                .setMediaSize(PrintAttributes.MediaSize.NA_LETTER)
+                .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
                 .build();
         printJobData.setPrintDialogOptions(printAttributes);
 
@@ -354,14 +354,15 @@ public class TabFragmentPrintLayout extends Fragment implements RadioGroup.OnChe
 
                   PDFAsset pdfAsset = new PDFAsset(userPickedUri, false);
 
-            PrintItem printItem4x6 = new PDFPrintItem(PrintAttributes.MediaSize.NA_INDEX_4X6, margins, scaleType, pdfAsset);
+        PrintItem printItemA4 = new PDFPrintItem(PrintAttributes.MediaSize.ISO_A4, margins, scaleType, pdfAsset);
+        PrintItem printItem4x6 = new PDFPrintItem(PrintAttributes.MediaSize.NA_INDEX_4X6, margins, scaleType, pdfAsset);
             PrintItem printItem5x7 = new PDFPrintItem(mediaSize5x7, margins, scaleType, pdfAsset);
             PrintItem printItemLetter = new PDFPrintItem(PrintAttributes.MediaSize.NA_LETTER, margins, scaleType, pdfAsset);
 
             printJobData = new PrintJobData(getActivity(), printItem4x6);
 
             printJobData.addPrintItem(printItemLetter);
-            printJobData.addPrintItem(printItem5x7);
+            printJobData.addPrintItem(printItemA4);
 
     }
 
